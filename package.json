@@ -1,0 +1,19 @@
+{
+  "name": "yaraguwa",
+  "version": "0.1.0",
+  "description": "Check the health of GitHub repositories and visualise it with D3.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "github",
+    "pullrequests",
+    "issues"
+  ],
+  "author": "Juga Paazmaya <paazmaya@yahoo.com> (http://www.paazmaya.fi)",
+  "license": "MIT",
+  "dependencies": {
+    "got": "^6.3.0"
+  }
+}
