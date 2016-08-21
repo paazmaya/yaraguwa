@@ -5,3 +5,6 @@
 List all open issues and pull requests in the given users repositories
 
 https://developer.github.com/v3/pulls/#list-pull-requests
+
+
+[Authentication is done with OAuth2 token that is send in a header](https://developer.github.com/v3/#authentication)

@@ -3,6 +3,7 @@ tmp
 # Logs
 logs
 *.log
+*.json
 
 # Runtime data
 pids

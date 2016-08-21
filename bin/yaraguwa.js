@@ -10,3 +10,12 @@
  * Licensed under the MIT license
  */
 'use strict';
+
+const yaraguwa = require('../index');
+
+const options = {
+  token: process.env.GITHUB_TOKEN || '',
+  username: 'paazmaya'
+};
+
+yaraguwa(options);
