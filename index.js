@@ -88,8 +88,6 @@ const getIssues = (data, token) => {
     method: 'GET'
   }).then(response => {
     console.log('url', url);
-    console.log(response.statusCode);
-    fs.writeFileSync(`issues-${data.name}.json`, JSON.stringify({issues: response.body}, null, '  '), 'utf8');
 
     if (Object.prototype.hasOwnProperty.call(response.headers, 'link')) {
       // there are more pages
@@ -137,7 +135,6 @@ const getRepositories = (username, token) => {
   }).then(response => {
     console.log('url', url);
     console.log(response.statusCode);
-    fs.writeFileSync(`repos-${username}-${params.type}-${params.page}.json`, JSON.stringify({repos: response.body}, null, '  '), 'utf8');
 
     if (Object.prototype.hasOwnProperty.call(response.headers, 'link')) {
       // there are more pages
@@ -175,6 +172,7 @@ module.exports = function (options) {
       console.log('list.length', list.length);
       fs.writeFileSync(`repos-${options.username}.json`, JSON.stringify({data: list}, null, '  '), 'utf8');
 
+      // Shall be doing D3.js stuff now?
     })
     .catch((error) => {
       console.error('There seem to have been errors');
