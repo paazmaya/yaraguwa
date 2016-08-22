@@ -41,6 +41,20 @@ const parseJson = (input) => {
 };
 
 /**
+ * Get the list of issues from GitHub API, split them to two lists:
+ * issues and pull requests.
+ *
+ * @param  {Array} list List of issues
+ * @return {Object} Issues and pull requests separated
+ */
+const splitIssuesPullRequests = (list) => {
+  const data = {};
+  data.issues = list.filter(item => !item.pull_request);
+  data.pullrequests = list.filter(item => item.pull_request);
+  return data;
+};
+
+/**
  * Get a list of issues for the given repository.
  *
  * @param {string} fullName GitHub username/reponame
@@ -48,7 +62,7 @@ const parseJson = (input) => {
  * @return {Promise}
  * @see https://developer.github.com/v3/issues/#list-issues-for-a-repository
  */
-const getIssues = (fullName, token) => {
+const getIssues = (data, token) => {
   const params = {
     state: 'open',
     sort: 'created',
@@ -58,7 +72,7 @@ const getIssues = (fullName, token) => {
   };
 
   const query = querystring.stringify(params);
-  const url = `${GITHUB_API}/repos/${fullName}/issues?${query}`;
+  const url = `${GITHUB_API}/repos/${data.full_name}/issues?${query}`;
 
   return got(url, {
     json: true,
@@ -75,14 +89,17 @@ const getIssues = (fullName, token) => {
   }).then(response => {
     console.log('url', url);
     console.log(response.statusCode);
-    fs.writeFileSync(`issues-${fullName.replace('/', '--')}.json`, JSON.stringify({repos: response.body}, null, '  '), 'utf8');
+    fs.writeFileSync(`issues-${data.name}.json`, JSON.stringify({issues: response.body}, null, '  '), 'utf8');
 
     if (Object.prototype.hasOwnProperty.call(response.headers, 'link')) {
       // there are more pages
       console.log(response.headers.link);
     }
 
-    return response.body;
+    const issues = splitIssuesPullRequests(response.body);
+    data.issues = issues.issues;
+    data.pullrequests = issues.pullrequests;
+    return data;
   }).catch(error => {
     console.error('Some issues with the GitHub API call');
     console.error(error);
@@ -147,8 +164,17 @@ module.exports = function (options) {
   return getRepositories(options.username, options.token)
     .then(list => {
       return list.map(item => {
-        return getIssues(item.full_name, options.token);
+        return getIssues(item, options.token);
       });
+    })
+    .then(list => {
+      return Promise.all(list);
+    })
+    .then(list => {
+      console.log('Have all completed now and does the list contain all issues?');
+      console.log('list.length', list.length);
+      fs.writeFileSync(`repos-${options.username}.json`, JSON.stringify({data: list}, null, '  '), 'utf8');
+
     })
     .catch((error) => {
       console.error('There seem to have been errors');
