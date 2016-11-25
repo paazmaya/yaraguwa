@@ -14,6 +14,6 @@
   "author": "Juga Paazmaya <paazmaya@yahoo.com> (http://www.paazmaya.fi)",
   "license": "MIT",
   "dependencies": {
-    "got": "^6.5.0"
+    "got": "^6.6.3"
   }
 }
