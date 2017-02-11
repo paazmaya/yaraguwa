@@ -11,6 +11,9 @@
     "pullrequests",
     "issues"
   ],
+  "engines": {
+    "node": ">=6.9.5"
+  },
   "author": "Juga Paazmaya <paazmaya@yahoo.com> (http://www.paazmaya.fi)",
   "license": "MIT",
   "dependencies": {
