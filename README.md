@@ -11,6 +11,7 @@ https://developer.github.com/v3/pulls/#list-pull-requests
 
 [D3.js](https://d3js.org/)
 
+Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `6.9.5`, which is [the Long Term Support (LTS) version](https://github.com/nodejs/LTS#lts-schedule1).
 
 ## Background for the name
 
@@ -37,4 +38,3 @@ Please make sure it is over 90% at all times.
 Copyright (c) [Juga Paazmaya](https://paazmaya.fi) <paazmaya@yahoo.com>
 
 Licensed under the [MIT license](LICENSE).
-
