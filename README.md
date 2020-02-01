@@ -11,7 +11,7 @@ https://developer.github.com/v3/pulls/#list-pull-requests
 
 [D3.js](https://d3js.org/)
 
-Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `8.11.1`, which is [the active Long Term Support (LTS) version](https://github.com/nodejs/Release#release-schedule).
+Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `10.13.0`, which is [the active Long Term Support (LTS) version](https://github.com/nodejs/Release#release-schedule).
 
 ## Background for the name
 
