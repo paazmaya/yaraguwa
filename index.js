@@ -7,7 +7,6 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  * Licensed under the MIT license
  */
-'use strict';
 
 const fs = require('fs'),
   querystring = require('querystring');
