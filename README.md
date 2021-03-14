@@ -33,6 +33,8 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
+[Changes happening across different versions and upcoming changes are tracked in the `CHANGELOG.md` file.](CHANGELOG.md)
+
 ## License
 
 Copyright (c) [Juga Paazmaya](https://paazmaya.fi) <paazmaya@yahoo.com>
